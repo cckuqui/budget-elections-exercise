@@ -13,33 +13,31 @@ with open(csvpath, newline="") as csvfile:
 # Empty dictionary to save values from csv file
     candidates = {}
 
-# Define variables to store counts of total votes and for each candidate
-    total_votes = 0
-
 # Save values of candidates in dictionary
     for rows in csvreader:
         votes = rows[2]
-        total_votes +=1
 
         if votes in candidates.keys():
             candidates[votes] += 1
         else:
             candidates[votes] = 1
 
-print(candidates)
-
-# Add value in percentage
-
+    total_votes = sum(candidates.values())
 
 # Print results
-print("Election Results")
-print("----------------------------")
-print("Total Votes: " + str(total_votes))
-print("----------------------------")
-# print("Total: $" + str(total_profits))
-# print("Average Change: " + str(ave_change))
-# print("Greatest Increase in Profits: " + months[max_change_month] + " ($" + str(max_monthly_change) + ")")
-# print("Greatest Decrease in Profits: " + months[min_change_month] + " ($" + str(min_monthly_change) + ")")
+    print("Election Results")
+    print("----------------------------")
+    print("Total Votes: " + str(total_votes))
+    print("----------------------------")
+
+    for k,v in candidates.items():
+        print(k + ":",round(v/total_votes*100,3), "%","(" + str(v) + ")")
+
+    print("----------------------------")
+    print("Total Votes: " + str(total_votes))
+    print("----------------------------")
+   
+
 
 # # Create output file and open it for writing
 # output_file = os.path.join("Financial_Analysis_Summary.txt")
