@@ -30,8 +30,8 @@ with open(csvpath, newline="") as csvfile:
 max_monthly_change = max(monthly_change)
 min_monthly_change = min(monthly_change)
 
-max_change_month = monthly_change.index(max(monthly_change)) + 1
-min_change_month = monthly_change.index(min(monthly_change)) + 1 
+max_change_month = monthly_change.index(max_monthly_change) + 1
+min_change_month = monthly_change.index(min_monthly_change) + 1 
 
 # Define variables to Print
 lengh = len(profits)
@@ -48,12 +48,12 @@ print("Greatest Increase in Profits: " + months[max_change_month] + " ($" + str(
 print("Greatest Decrease in Profits: " + months[min_change_month] + " ($" + str(min_monthly_change) + ")")
 
 # Create output file and open it for writing
-output_file = os.path.join("Financial_Analysis_Summary.txt")
+output_file = os.path.join("Financial Analysis.txt")
 
 with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
 
-# Write methods to print to Financial_Analysis_Summary 
+# Write methods to print to Financial Analysis 
     datafile.write("Financial Analysis")
     datafile.write("\n")
     datafile.write("----------------------------")

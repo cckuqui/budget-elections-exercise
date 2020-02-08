@@ -31,31 +31,36 @@ with open(csvpath, newline="") as csvfile:
     print("----------------------------")
 
     for k,v in candidates.items():
+        # candidates["percentage"]
         print(k + ":",round(v/total_votes*100,3), "%","(" + str(v) + ")")
-
+    
+    inverse_dictionary = [(value, key) for key, value in candidates.items()]
+    
     print("----------------------------")
-    print("Total Votes: " + str(total_votes))
+    print("Winner: " + str(max(inverse_dictionary)[1]))
     print("----------------------------")
-   
+ 
+# Create output file and open it for writing
+output_file = os.path.join("Election Results.txt")
 
+with open(output_file, "w", newline="") as datafile:
+    writer = csv.writer(datafile)
 
-# # Create output file and open it for writing
-# output_file = os.path.join("Financial_Analysis_Summary.txt")
-
-# with open(output_file, "w", newline="") as datafile:
-#     writer = csv.writer(datafile)
-
-# # Write methods to print to Financial_Analysis_Summary 
-#     datafile.write("Financial Analysis")
-#     datafile.write("\n")
-#     datafile.write("----------------------------")
-#     datafile.write("\n")
-#     datafile.write("Total Months: " + str(lengh))
-#     datafile.write("\n")
-#     datafile.write("Total: $" + str(total_profits))
-#     datafile.write("\n")
-#     datafile.write("Average Change: " + str(ave_change))
-#     datafile.write("\n")
-#     datafile.write("Greatest Increase in Profits: " + months[max_change_month] + " ($" + str(max_monthly_change) + ")")
-#     datafile.write("\n")
-#     datafile.write("Greatest Decrease in Profits: " + months[min_change_month] + " ($" + str(min_monthly_change) + ")")
+# Write methods to print to Election Results 
+    datafile.write("Election Results")
+    datafile.write("\n")
+    datafile.write("----------------------------")
+    datafile.write("\n")
+    datafile.write("Total Votes: " + str(total_votes))
+    datafile.write("\n")
+    datafile.write("----------------------------")
+    datafile.write("\n")
+    for k,v in candidates.items():
+        string = f"{k}: {round((v/total_votes * 100),3)}% ({v})\n"
+  
+        datafile.write(string)
+    datafile.write("----------------------------")
+    datafile.write("\n")
+    datafile.write("Winner: " + str(max(inverse_dictionary)[1]))
+    datafile.write("\n")
+    datafile.write("----------------------------")
