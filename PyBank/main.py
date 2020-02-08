@@ -39,8 +39,8 @@ total_profits = sum(profits)
 ave_change = round(sum(monthly_change)/len(monthly_change),2)
 
 # Print results
-line1 = print("Financial Analysis")
-line2 = print("----------------------------")
+print("Financial Analysis")
+print("----------------------------")
 print("Total Months: " + str(lengh))
 print("Total: $" + str(total_profits))
 print("Average Change: " + str(ave_change))
