@@ -32,7 +32,8 @@ with open(csvpath, newline="") as csvfile:
 
     for k,v in candidates.items():
         # candidates["percentage"]
-        print(k + ":",round(v/total_votes*100,3), "%","(" + str(v) + ")")
+        string = f"{k}: {round((v/total_votes * 100),3)}00% ({v})"
+        print(string)
     
     inverse_dictionary = [(value, key) for key, value in candidates.items()]
     
@@ -56,8 +57,7 @@ with open(output_file, "w", newline="") as datafile:
     datafile.write("----------------------------")
     datafile.write("\n")
     for k,v in candidates.items():
-        string = f"{k}: {round((v/total_votes * 100),3)}% ({v})\n"
-  
+        string = f"{k}: {round((v/total_votes * 100),3)}00% ({v})\n"
         datafile.write(string)
     datafile.write("----------------------------")
     datafile.write("\n")
