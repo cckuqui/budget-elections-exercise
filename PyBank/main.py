@@ -34,18 +34,19 @@ max_change_month = monthly_change.index(max_monthly_change) + 1
 min_change_month = monthly_change.index(min_monthly_change) + 1 
 
 # Define variables to Print
-lengh = len(profits)
-total_profits = sum(profits)
-ave_change = round(sum(monthly_change)/len(monthly_change),2)
+length = len(profits)
+total_profits = format(sum(profits),'11,')
+ave_change = format(sum(monthly_change)/len(monthly_change),'9,.2f')
 
 # Print results
-print("Financial Analysis")
-print("----------------------------")
-print("Total Months: " + str(lengh))
-print("Total: $" + str(total_profits))
-print("Average Change: " + str(ave_change))
-print("Greatest Increase in Profits: " + months[max_change_month] + " ($" + str(max_monthly_change) + ")")
-print("Greatest Decrease in Profits: " + months[min_change_month] + " ($" + str(min_monthly_change) + ")")
+print(f'Financial Analysis\n\
+----------------------------\n\
+Total Months: {str(length)}\n\
+Total: ${str(total_profits)}\n\
+Average Change: {str(ave_change)}\n\
+Greatest Increase in Profits: {months[max_change_month]} (${str(format(max(monthly_change),"10,.0f"))})\n\
+Greatest Decrease in Profits: {months[min_change_month]} (${str(format(min(monthly_change),"10,.0f"))})')
+
 
 # Create output file and open it for writing
 output_file = os.path.join("Financial Analysis.txt")
@@ -54,16 +55,10 @@ with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
 
 # Write methods to print to Financial Analysis 
-    datafile.write("Financial Analysis")
-    datafile.write("\n")
-    datafile.write("----------------------------")
-    datafile.write("\n")
-    datafile.write("Total Months: " + str(lengh))
-    datafile.write("\n")
-    datafile.write("Total: $" + str(total_profits))
-    datafile.write("\n")
-    datafile.write("Average Change: " + str(ave_change))
-    datafile.write("\n")
-    datafile.write("Greatest Increase in Profits: " + months[max_change_month] + " ($" + str(max_monthly_change) + ")")
-    datafile.write("\n")
-    datafile.write("Greatest Decrease in Profits: " + months[min_change_month] + " ($" + str(min_monthly_change) + ")")
+    datafile.write(f'Financial Analysis\n\
+----------------------------\n\
+Total Months: {str(length)}\n\
+Total: ${str(total_profits)}\n\
+Average Change: {str(ave_change)}\n\
+Greatest Increase in Profits: {months[max_change_month]} (${str(format(max(monthly_change),"10,.0f"))})\n\
+Greatest Decrease in Profits: {months[min_change_month]} (${str(format(min(monthly_change),"10,.0f"))})')
