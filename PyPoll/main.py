@@ -24,6 +24,10 @@ with open(csvpath, newline="") as csvfile:
 
     total_votes = sum(candidates.values())
 
+# Generate string with a list of candidates and their results
+    # for k,v in candidates.items():
+    #     string = f"{k}: {round((v/total_votes * 100),0)}% ({format(v,"10,")})"
+
 # Print results
     print("Election Results")
     print("----------------------------")
@@ -31,8 +35,7 @@ with open(csvpath, newline="") as csvfile:
     print("----------------------------")
 
     for k,v in candidates.items():
-        # candidates["percentage"]
-        string = f"{k}: {round((v/total_votes * 100),3)}00% ({v})"
+        string = f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})"
         print(string)
     
     inverse_dictionary = [(value, key) for key, value in candidates.items()]
@@ -57,7 +60,7 @@ with open(output_file, "w", newline="") as datafile:
     datafile.write("----------------------------")
     datafile.write("\n")
     for k,v in candidates.items():
-        string = f"{k}: {round((v/total_votes * 100),3)}00% ({v})\n"
+        string = f"{k}: {round((v/total_votes * 100),0)}% ({v})\n"
         datafile.write(string)
     datafile.write("----------------------------")
     datafile.write("\n")

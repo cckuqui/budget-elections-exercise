@@ -3,7 +3,7 @@ import os
 import csv
 
 # Set path for file
-csvpath = os.path.join ("budget_data.csv")
+csvpath = os.path.join("budget_data.csv")
 
 # Open file
 with open(csvpath, newline="") as csvfile:
@@ -39,13 +39,15 @@ total_profits = format(sum(profits),'11,')
 ave_change = format(sum(monthly_change)/len(monthly_change),'9,.2f')
 
 # Print results
-print(f'Financial Analysis\n\
+results = f'Financial Analysis\n\
 ----------------------------\n\
 Total Months: {str(length)}\n\
 Total: ${str(total_profits)}\n\
 Average Change: {str(ave_change)}\n\
 Greatest Increase in Profits: {months[max_change_month]} (${str(format(max(monthly_change),"10,.0f"))})\n\
-Greatest Decrease in Profits: {months[min_change_month]} (${str(format(min(monthly_change),"10,.0f"))})')
+Greatest Decrease in Profits: {months[min_change_month]} (${str(format(min(monthly_change),"10,.0f"))})'
+
+print(results)
 
 
 # Create output file and open it for writing
@@ -55,10 +57,4 @@ with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
 
 # Write methods to print to Financial Analysis 
-    datafile.write(f'Financial Analysis\n\
-----------------------------\n\
-Total Months: {str(length)}\n\
-Total: ${str(total_profits)}\n\
-Average Change: {str(ave_change)}\n\
-Greatest Increase in Profits: {months[max_change_month]} (${str(format(max(monthly_change),"10,.0f"))})\n\
-Greatest Decrease in Profits: {months[min_change_month]} (${str(format(min(monthly_change),"10,.0f"))})')
+    datafile.write(results)
