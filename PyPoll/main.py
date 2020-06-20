@@ -13,7 +13,7 @@ with open(csvpath, newline="") as csvfile:
 # Empty dictionary to save values from csv file
     candidates = {}
 
-# Save values of candidates in dictionary
+# Save values of candidates in the dictionary
     for rows in csvreader:
         votes = rows[2]
 
@@ -24,25 +24,26 @@ with open(csvpath, newline="") as csvfile:
 
     total_votes = sum(candidates.values())
 
-# Generate string with a list of candidates and their results
-    # for k,v in candidates.items():
-    #     string = f"{k}: {round((v/total_votes * 100),0)}% ({format(v,"10,")})"
+# Determine the winner
+    winner = max([(value, key) for key, value in candidates.items()])[1]
+
+# Fuction of candidate list with votes and percentages
+    def candidate():
+        for k,v in candidates.items():
+            print(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})")
+
+# Generate string with a list of candidates and their results 
+    whole_string = f'Election Results \n\
+----------------------------\n\
+Total Votes {str(total_votes)} \n\
+----------------------------\n\
+{candidate()}\n\
+----------------------------\n\
+Winner: {str(winner)}\n\
+----------------------------'
 
 # Print results
-    print("Election Results")
-    print("----------------------------")
-    print("Total Votes: " + str(total_votes))
-    print("----------------------------")
-
-    for k,v in candidates.items():
-        string = f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})"
-        print(string)
-    
-    inverse_dictionary = [(value, key) for key, value in candidates.items()]
-    
-    print("----------------------------")
-    print("Winner: " + str(max(inverse_dictionary)[1]))
-    print("----------------------------")
+    print(whole_string)
  
 # Create output file and open it for writing
 output_file = os.path.join("Election Results.txt")
@@ -51,19 +52,4 @@ with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
 
 # Write methods to print to Election Results 
-    datafile.write("Election Results")
-    datafile.write("\n")
-    datafile.write("----------------------------")
-    datafile.write("\n")
-    datafile.write("Total Votes: " + str(total_votes))
-    datafile.write("\n")
-    datafile.write("----------------------------")
-    datafile.write("\n")
-    for k,v in candidates.items():
-        string = f"{k}: {round((v/total_votes * 100),0)}% ({v})\n"
-        datafile.write(string)
-    datafile.write("----------------------------")
-    datafile.write("\n")
-    datafile.write("Winner: " + str(max(inverse_dictionary)[1]))
-    datafile.write("\n")
-    datafile.write("----------------------------")
+    datafile.write(whole_string)
