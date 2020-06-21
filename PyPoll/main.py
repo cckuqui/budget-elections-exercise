@@ -30,7 +30,7 @@ with open(csvpath, newline="") as csvfile:
 # Fuction of candidate list with votes and percentages
     def candidate():
         for k,v in candidates.items():
-            print(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})")
+            yield f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" 
 
 # Generate string with a list of candidates and their results 
     whole_string = f'Election Results \n\
