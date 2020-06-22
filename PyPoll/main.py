@@ -25,26 +25,23 @@ with open(csvpath, newline="") as csvfile:
     total_votes = sum(candidates.values())
 
 # Determine the winner
-    winner = max([(value, key) for key, value in candidates.items()])[1]
+    winner = max([(value, key) for key, value in candidates.items()])[1]        
 
-# Fuction of candidate list with votes and percentages
-    def candidate():
-        for k,v in candidates.items():
-            yield f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" 
-
-# Generate string with a list of candidates and their results 
-    whole_string = f'Election Results \n\
+# Generate strings to print 
+    string1 = f'Election Results \n\
 ----------------------------\n\
 Total Votes {str(total_votes)} \n\
-----------------------------\n\
-{candidate()}\n\
-----------------------------\n\
+----------------------------'
+    string2 = f'----------------------------\n\
 Winner: {str(winner)}\n\
 ----------------------------'
 
 # Print results
-    print(whole_string)
- 
+    print(string1)
+    for k,v in candidates.items():
+        print(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" )
+    print(string2)
+
 # Create output file and open it for writing
 output_file = os.path.join("Election Results.txt")
 
@@ -52,4 +49,7 @@ with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
 
 # Write methods to print to Election Results 
-    datafile.write(whole_string)
+    datafile.write(string1)
+    for k,v in candidates.items():
+        datafile.write(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" )
+    datafile.write(string2)
