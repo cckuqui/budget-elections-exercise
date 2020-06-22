@@ -3,7 +3,7 @@ import os
 import csv
 
 # Set path for file
-csvpath = os.path.join ("election_data.csv")
+csvpath = os.path.join ("Resources/election_data.csv")
 
 # Open file
 with open(csvpath, newline="") as csvfile:
@@ -43,7 +43,7 @@ Winner: {str(winner)}\n\
     print(string2)
 
 # Create output file and open it for writing
-output_file = os.path.join("Election Results.txt")
+output_file = os.path.join("Results/Election Results.txt")
 
 with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)

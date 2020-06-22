@@ -3,7 +3,7 @@ import os
 import csv
 
 # Set path for file
-csvpath = os.path.join("budget_data.csv")
+csvpath = os.path.join("Resources/budget_data.csv")
 
 # Open file
 with open(csvpath, newline="") as csvfile:
@@ -51,7 +51,7 @@ print(results)
 
 
 # Create output file and open it for writing
-output_file = os.path.join("Financial Analysis.txt")
+output_file = os.path.join("Results/Financial Analysis.txt")
 
 with open(output_file, "w", newline="") as datafile:
     writer = csv.writer(datafile)
