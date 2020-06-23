@@ -30,8 +30,8 @@ with open(csvpath, newline="") as csvfile:
 # Generate strings to print 
     string1 = f'Election Results \n\
 ----------------------------\n\
-Total Votes {str(total_votes)} \n\
-----------------------------'
+Total Votes {str(format(total_votes,","))} \n\
+----------------------------\n'
     string2 = f'----------------------------\n\
 Winner: {str(winner)}\n\
 ----------------------------'
@@ -39,7 +39,7 @@ Winner: {str(winner)}\n\
 # Print results
     print(string1)
     for k,v in candidates.items():
-        print(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" )
+        print(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')} votes)\n")
     print(string2)
 
 # Create output file and open it for writing
@@ -51,5 +51,5 @@ with open(output_file, "w", newline="") as datafile:
 # Write methods to print to Election Results 
     datafile.write(string1)
     for k,v in candidates.items():
-        datafile.write(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')})" )
+        datafile.write(f"{k}: {round((v/total_votes * 100),0)}% ({format(v,',')} votes)\n" )
     datafile.write(string2)
