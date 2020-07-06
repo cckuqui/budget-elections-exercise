@@ -14,7 +14,7 @@ For this example I used two CSV files with diferent information:
 
 One of them with financial records with only two columns, `Date` and `Profit/Losses`.
 
-Objective with this data is to analize:
+ ### Objective for the financial recods:
 
 * Number of months included.
 
@@ -30,7 +30,7 @@ Objective with this data is to analize:
 
 The second data contains information about an election results, there are 3 columns in this data set, `Voter ID`, `County` and `Candidate`.
 
-The objective in this case was to:
+### Objective for the election data
 
 * Count the total number of votes
 
