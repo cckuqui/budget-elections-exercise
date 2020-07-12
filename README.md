@@ -50,5 +50,4 @@ The txt file for each results can be found inside the folder Results. The screen
 
 ## Copyright
 
-Information from Trilogy Education Services © 2019. All Rights Reserved.
 First image is from www.cursosgis.com
